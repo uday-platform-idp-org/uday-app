@@ -1,0 +1,75 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.env
+.venv/
+venv/
+ENV/
+env/
+pip-selfcheck.json
+
+# Environment variable files
+.env
+*.env
+
+# Flask instance folder and config
+instance/
+*.pyc
+
+# SQLite / Database files
+*.sqlite3
+*.db
+
+# Logs
+*.log
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# MyPy and Pyright
+.mypy_cache/
+.pyright/
+
+# Pytest
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Editor/IDE configs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS and Linux system files
+.DS_Store
+Thumbs.db
+
+# Docker volumes/data
+pgdata/
+__docker_build__/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# HTML static/cache files (if using Flask static)
+static/*.cache
+static/*.tmp
+
+# Docker Compose override (local dev only)
+docker-compose.override.yml
