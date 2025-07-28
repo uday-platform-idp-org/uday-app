@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: uday-config
+  namespace: uday-app
+data:
+  DATABASE_URL: postgresql://postgres:postgres@db:5432/udaydb
