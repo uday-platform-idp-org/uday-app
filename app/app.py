@@ -1,8 +1,11 @@
+import time
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from models import db
+from sqlalchemy.exc import OperationalError
+from sqlalchemy import text  # <- IMPORTANTE
+from models import postgres
 from routes import bp
-import os
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -11,10 +14,26 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db.init_app(app)
+postgres.init_app(app)
 
-with app.app_context():
-    db.create_all()
+def wait_for_db():
+    """Espera até que o banco esteja disponível."""
+    max_retries = 10
+    for attempt in range(max_retries):
+        try:
+            with app.app_context():
+                postgres.session.execute(text("SELECT 1"))  # <- AQUI
+            print("✅ Banco de dados conectado!")
+            return True
+        except OperationalError:
+            print(f"⏳ Banco não disponível, tentando novamente... ({attempt+1}/{max_retries})")
+            time.sleep(2)
+    print("❌ Não foi possível conectar ao banco.")
+    return False
+
+if wait_for_db():
+    with app.app_context():
+        postgres.create_all()
 
 app.register_blueprint(bp)
 

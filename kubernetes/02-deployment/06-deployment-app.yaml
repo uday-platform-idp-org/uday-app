@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uday-app
+  namespace: uday-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: uday-app
+  template:
+    metadata:
+      labels:
+        app: uday-app
+    spec:
+      containers:
+        - name: uday-app
+          image: udaytc/uday-app:v3
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DATABASE_URL
+              value: postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@postgres:5432/$(POSTGRES_DB)
+          envFrom:
+            - secretRef:
+                name: postgres-secret
+          command: ["./wait-for-it.sh", "postgres:5432", "--", "python", "app/app.py"]
