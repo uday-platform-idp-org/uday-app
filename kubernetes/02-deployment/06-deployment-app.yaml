@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: uday
-          image: udaytc/uday-app:v6
+          image: udaytc/uday-app:v7
           ports:
             - containerPort: 5000
           env:
