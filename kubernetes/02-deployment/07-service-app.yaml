@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: uday-app-service
+  name: uday
   namespace: uday-app
 spec:
   selector:
-    app: uday-app
+    app: uday
   ports:
     - port: 80
       targetPort: 5000
-  type: ClusterIP
+      protocol: TCP

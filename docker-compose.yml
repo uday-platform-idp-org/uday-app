@@ -19,7 +19,6 @@ services:
       - "80:5000"
     env_file:
       - .env
-    command: ["./wait-for-it.sh", "postgres:5432", "--", "python", "app/app.py"]
 
 volumes:
   pgdata:
