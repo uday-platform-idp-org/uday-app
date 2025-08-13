@@ -1,0 +1,14 @@
+namespace: uday-app
+
+postgres:
+  user: postgres
+  password: postgres
+  db: udaydb
+  pvcSize: 5Gi
+  image: postgres:16
+
+app:
+  image: udaytc/uday-app:v7
+  servicePort: 80
+  containerPort: 5000
+  hostname: uday-app.uday.com.br

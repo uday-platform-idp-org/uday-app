@@ -1,0 +1,18 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: uday-route
+  namespace: {{ .Values.namespace }}
+spec:
+  parentRefs:
+    - name: uday-gateway
+  hostnames:
+    - "{{ .Values.app.hostname }}"
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: uday-app-service
+          port: {{ .Values.app.servicePort }}
