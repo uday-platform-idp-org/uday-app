@@ -1,4 +1,7 @@
 namespace: uday-app
+istioInjection:
+  enabled: "enabled"
+
 
 postgres:
   user: postgres
