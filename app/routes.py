@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify, render_template, redirect, url_for
 from models import adicionar_empresa, listar_empresas
+import datetime
 
 bp = Blueprint('main', __name__)
 
@@ -31,3 +32,13 @@ def cadastrar_form():
     nome = request.form['nome']
     adicionar_empresa(cnpj, nome)
     return redirect(url_for('main.index'))
+
+health_bp = Blueprint('health', __name__)
+
+@health_bp.route('/healthz')
+def health_check():
+    return jsonify({
+        "Status": "OK",
+        "Version": "1.0.0",
+        "Tempo": datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S"), 
+    }), 200
