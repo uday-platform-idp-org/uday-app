@@ -11,23 +11,23 @@ postgres:
   image: postgres:16
 
 app:
-  image: udaytc/uday-app:v2
+  image: udaytc/uday-app:v8
   servicePort: 80
   containerPort: 5000
   hostname: uday-app.uday.com.br
 
 livenessProbe:
   path: /healthz
-  port: 8080
-  initialDelaySeconds: 10
+  port: 5000
+  initialDelaySeconds: 30
   periodSeconds: 10
-  timeoutSeconds: 2
-  failureThreshold: 3
+  timeoutSeconds: 5
+  failureThreshold: 5
 
 readinessProbe:
   path: /healthz
-  port: 8080
-  initialDelaySeconds: 5
-  periodSeconds: 5
-  timeoutSeconds: 2
+  port: 5000
+  initialDelaySeconds: 20
+  periodSeconds: 10
+  timeoutSeconds: 5
   failureThreshold: 3
