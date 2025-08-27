@@ -21,4 +21,3 @@ jobs:
       argocd_server: argocd.uday.com.br:9092
     secrets:
       argocd_password: ${{ secrets.ARGOCD_PASSWORD }}
-      
