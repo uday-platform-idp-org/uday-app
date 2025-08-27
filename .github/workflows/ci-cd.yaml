@@ -20,6 +20,6 @@ jobs:
     with:
       app_name: uday-app
       argocd_server: argocd.uday.com.br
+      image_tag: ${{ needs.ci.outputs.image_tag }}
     secrets:
       argocd_password: ${{ secrets.ARGOCD_PASSWORD }}
-      
