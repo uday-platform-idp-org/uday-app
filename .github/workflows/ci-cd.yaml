@@ -1,0 +1,23 @@
+name: CI → CD Pipeline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    uses: org/workflows-repo/.github/workflows/ci.yml@v1.0.0
+    with:
+      app_name: app
+      dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+    secrets:
+      dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
+
+  cd:
+    needs: ci
+    uses: org/workflows-repo/.github/workflows/cd-argocd.yml@v1.0.0
+    with:
+      app_name: app
+      argocd_server: argocd.uday.com.br
+    secrets:
+      argocd_password: ${{ secrets.ARGOCD_PASSWORD }}
