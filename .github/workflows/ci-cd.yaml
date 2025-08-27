@@ -9,8 +9,8 @@ jobs:
     uses: uday-platform-idp-org/tools/.github/workflows/ci.yaml@main
     with:
       app_name: uday-app
-      dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
     secrets:
+      dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
 
   cd:
