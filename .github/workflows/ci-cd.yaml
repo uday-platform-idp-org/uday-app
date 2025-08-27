@@ -21,3 +21,4 @@ jobs:
       argocd_server: argocd.cloududay.com.br
     secrets:
       argocd_password: ${{ secrets.ARGOCD_PASSWORD }}
+      
