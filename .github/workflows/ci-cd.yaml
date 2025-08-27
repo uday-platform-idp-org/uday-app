@@ -1,3 +1,4 @@
+# uday-app/.github/workflows/ci-cd.yaml
 name: CI-CD Pipeline
 
 on:
@@ -6,7 +7,7 @@ on:
 
 jobs:
   ci:
-    uses: uday-platform-idp-org/tools/.github/workflows/ci.yml@main
+    uses: uday-platform-idp-org/tools/.github/workflows/ci.yaml@main
     with:
       app_name: uday-app
     secrets:
@@ -15,7 +16,7 @@ jobs:
 
   cd:
     needs: ci
-    uses: uday-platform-idp-org/tools/.github/workflows/cd.yml@main
+    uses: uday-platform-idp-org/tools/.github/workflows/cd.yaml@main
     with:
       app_name: uday-app
       argocd_server: argocd.cloududay.com.br
