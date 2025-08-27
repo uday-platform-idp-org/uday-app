@@ -23,5 +23,4 @@ jobs:
       image_tag: ${{ needs.ci.outputs.image_tag }}
     secrets:
       argocd_password: ${{ secrets.ARGOCD_PASSWORD }}
-      github_token: ${{ secrets.GITHUB_TOKEN }}
-      
+      repo_token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
