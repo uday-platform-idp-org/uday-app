@@ -6,7 +6,7 @@ on:
 
 jobs:
   ci:
-    uses: org/workflows-repo/.github/workflows/ci.yml@v1.0.0
+    uses: uday-platform-idp-org/tools/.github/workflows/ci.yaml@main
     with:
       app_name: app
       dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -15,9 +15,9 @@ jobs:
 
   cd:
     needs: ci
-    uses: org/workflows-repo/.github/workflows/cd-argocd.yml@v1.0.0
+    uses: uday-platform-idp-org/tools/.github/workflows/cd.yaml@main
     with:
       app_name: app
-      argocd_server: argocd.uday.com.br
+      argocd_server: argocd.cloududay.com.br
     secrets:
       argocd_password: ${{ secrets.ARGOCD_PASSWORD }}
