@@ -19,6 +19,6 @@ jobs:
     uses: uday-platform-idp-org/tools/.github/workflows/cd.yaml@main
     with:
       app_name: uday-app
-      argocd_server: argocd.cloududay.com.br
+      argocd_server: argocd.uday.com.br:9092
     secrets:
       argocd_password: ${{ secrets.ARGOCD_PASSWORD }}
