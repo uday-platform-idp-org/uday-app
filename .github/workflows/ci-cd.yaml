@@ -24,4 +24,3 @@ jobs:
     secrets:
       argocd_password: ${{ secrets.ARGOCD_PASSWORD }}
       repo_token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
-      
