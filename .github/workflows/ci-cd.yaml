@@ -14,8 +14,19 @@ jobs:
       dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
 
-  cd:
+  debug-outputs:
     needs: ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug CI outputs
+        run: |
+          echo "=== DEBUGGING CI OUTPUTS ==="
+          echo "image_tag from CI = '${{ needs.ci.outputs.image_tag }}'"
+          echo "All available outputs:"
+          echo "needs.ci.outputs = ${{ toJson(needs.ci.outputs) }}"
+
+  cd:
+    needs: [ci, debug-outputs]
     uses: uday-platform-idp-org/tools/.github/workflows/cd.yaml@main
     with:
       app_name: uday-app
@@ -24,4 +35,3 @@ jobs:
     secrets:
       argocd_password: ${{ secrets.ARGOCD_PASSWORD }}
       repo_token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
-      
