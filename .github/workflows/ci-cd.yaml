@@ -14,15 +14,6 @@ jobs:
       dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
       dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
 
-  debug:
-    needs: ci
-    runs-on: ubuntu-latest
-    steps:
-      - name: Debug CI outputs
-        run: |
-          echo "CI outputs:"
-          echo "image_tag = '${{ needs.ci.outputs.image_tag }}'"
-
   cd:
     needs: ci
     uses: uday-platform-idp-org/tools/.github/workflows/cd.yaml@main
