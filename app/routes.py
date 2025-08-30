@@ -39,6 +39,6 @@ health_bp = Blueprint('health', __name__)
 def health_check():
     return jsonify({
         "Status": "OK",
-        "Version": "2.3.4",
+        "Version": "2.3.5",
         "Tempo": datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S"), 
     }), 200
