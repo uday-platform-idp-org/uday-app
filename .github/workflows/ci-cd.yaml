@@ -4,6 +4,8 @@ name: CI-CD Pipeline
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'helm-charts/**/values.yaml'
 
 jobs:
   ci:
@@ -26,7 +28,7 @@ jobs:
           echo "needs.ci.outputs = ${{ toJson(needs.ci.outputs) }}"
 
   cd:
-    needs: [ci, debug-outputs]
+    needs: ci
     uses: uday-platform-idp-org/tools/.github/workflows/cd.yaml@main
     with:
       app_name: uday-app
@@ -35,4 +37,3 @@ jobs:
     secrets:
       argocd_password: ${{ secrets.ARGOCD_PASSWORD }}
       repo_token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
-      
