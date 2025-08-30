@@ -12,7 +12,7 @@ postgres:
 
 app:
   image: udaytc/uday-app
-  tag: 04d77aa
+  tag: 1c047be
   servicePort: 80
   containerPort: 5000
   hostname: uday-app.uday.com.br
